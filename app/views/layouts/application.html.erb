@@ -10,6 +10,27 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+      <h4>Welcome, <%= current_user.email %>!
+      | <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    </h4>
+    <% else %>
+      <h4>
+        Welcome!
+       | <%= link_to 'Login', new_user_session_path %>
+       | <%= link_to 'Register', new_user_registration_path %>
+      </h4>
+    <% end %>
+    <nav>
+      <ul>
+        <li><%= link_to 'Home', root_path %></li>
+        <% if user_signed_in? && current_user.has_role?(:admin) %>
+          <li><%= link_to 'Admin', admin_menu_path, id: 'admin-link' %></li>
+        <% end %>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

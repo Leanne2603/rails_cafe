@@ -1,3 +1,7 @@
+  # skip_before_action :verify_authenticity_token
+
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the

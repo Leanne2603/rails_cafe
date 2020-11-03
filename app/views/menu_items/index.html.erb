@@ -1,0 +1,21 @@
+<h1>Menu Items</h1>
+
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Qty</th>
+    </tr>
+    <% @items.each do |item| %>
+    <tr>
+        <td> <%= link_to item.item, menu_item_path(item) %></td>
+        <td> <%= "%.2f" % item.price %></td>
+        <td> <%= item.quantity.to_i %></td>
+        <td><%= link_to "Edit", edit_menu_item_path(item) %></td>
+    </tr>
+    <% end %>
+</table>
+<hr>
+        <div>
+            <%= button_to "Add New Item", new_menu_item_path, :method => "get" %>
+        </div>

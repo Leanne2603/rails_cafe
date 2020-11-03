@@ -1,0 +1,26 @@
+<h1><%= @item[:item] %></h1>
+
+<h3>$<%= "%.2f" % @item.price %></h3>
+<p>Quantity: <%= @item.quantity.to_i %> </p>
+<hr>
+<p><%= link_to "Delete!", menu_item_path(@item), method: "delete", data: { confirm: "Are you sure" } %></p>
+<p><button id="buynow-button">Buy Now!</button></p>
+<p><%= cl_image_tag(@item.image.key, crop: :scale, width: 200, cloud_name: 'desxzkkeh') %></p>
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    const stripe = Stripe('<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>')
+    const buyButton = document.getElementById('buynow-button')
+
+    buyButton.addEventListener('click', function() {
+        fetch('<%= buy_path(@item.id) %>', {
+            method: 'POST'
+        })
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(session) {
+            return stripe.redirectToCheckout({ sessionId: session.id})
+        })
+    })
+</script>

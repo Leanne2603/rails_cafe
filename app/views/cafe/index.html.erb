@@ -1,0 +1,16 @@
+<h1>Welcome to Coder Cafe!</h1>
+
+
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Price</th>
+    </tr>
+    <% @menu.each do | menu_item |%>
+    <tr>
+        <td><%= link_to menu_item.item.capitalize, order_path(menu_item.item) %></td>
+        <td> $ <%= "%.2f" % menu_item.price %></td>
+    </tr>
+    <% end %>
+</table>
+

@@ -1,0 +1,27 @@
+<h1>Edit <%= @item.item %></h1>
+
+<%= render 'form' %>
+
+
+
+
+<!-- <h1>Create menu item</h1>
+<form action="<%= menu_item_path(@item) %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
+    <div>
+        <label for="item">Item</label>
+        <input type="text" id="item" name="item" value="<%= @item.item %>">
+    </div>
+    <div>
+        <label for="price">Price</label>
+        <input type="number" step="0.01" id="price" name="price" value="<%= @item.price %>">
+    </div>
+    <div>
+        <label for="quantity">Quantity</label>
+        <input type="number" id="qty" name="quantity" value="<%= @item.quantity %>">
+    </div>
+    <div>
+        <button> Update <%= @item.item %> </button>
+    </div>
+</form> -->

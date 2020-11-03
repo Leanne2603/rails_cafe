@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+items = [
+    {item: "Tea", price: 3.50, quantity: 1},
+    {item: "Tea", price: 3.50, quantity: 1},
+    {item: "Scone", price: 5.00, quantity: 1},
+    {item: "Donut", price: 2.50, quantity: 1}
+]
+
+MenuItem.destroy_all
+
+MenuItem.create!(items)
+
+
+
+
+
+# MenuItem.create(item: "Tea", price: 3.50, quantity: 1)
+# MenuItem.create(item: "Latte", price: 4.00, quantity: 1)
+# MenuItem.create(item: "Scone", price: 5.00, quantity: 1)
+# MenuItem.create(item: "Donut", price: 2.50, quantity: 1)

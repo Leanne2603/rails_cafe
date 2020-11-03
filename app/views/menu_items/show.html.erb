@@ -5,7 +5,9 @@
 <hr>
 <p><%= link_to "Delete!", menu_item_path(@item), method: "delete", data: { confirm: "Are you sure" } %></p>
 <p><button id="buynow-button">Buy Now!</button></p>
-<p><%= cl_image_tag(@item.image.key, crop: :scale, width: 200, cloud_name: 'desxzkkeh') %></p>
+<% if @item.image.attached? %>
+    <p><%= cl_image_tag(@item.image.key, crop: :scale, width: 200, cloud_name: 'desxzkkeh') %></p>
+<% end %>
 <script src="https://js.stripe.com/v3/"></script>
 
 <script>

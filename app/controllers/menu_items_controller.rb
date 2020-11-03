@@ -2,6 +2,7 @@ class MenuItemsController < ApplicationController
   before_action :authenticate_user!, except: [:buy]  #, except [:index] etc
   before_action :check_roles, except: [:buy] #create method in private
   before_action :set_item, only: [:show, :update, :edit, :destroy, :buy]
+  before_action :set_menus, only: [:show, :update, :edit, :new]
 
   def index
     @items = MenuItem.all
@@ -71,9 +72,12 @@ class MenuItemsController < ApplicationController
 
   private
 
+  def set_menus
+    @menus = Menu.all
+  end
+
   def set_item
     @item = MenuItem.find(params[:id])
-    @menus = Menu.all
   end
 
   def menu_item_params
